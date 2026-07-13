@@ -1,13 +1,12 @@
-
 <!doctype html>
 <html lang="fa" dir="rtl">
  <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260713-05-4d7706e"}');</script><script src="/_sdk/f432b76fb310b513.telemetry_sdk.js" integrity="sha512-9FJQ55EKmmqhyyik8BhrMVfm0+iYYfb8uOlRsjtkxJMEI97qOVEI4PnHohDjQAtvAep0IOEpdQ64eki0sz62ug=="></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>لیگ بهارستان</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
         :root {
             --bg-color: #121212;
             --card-bg: #1e1e1e;
@@ -15,532 +14,568 @@
             --accent-color: #d4af37;
             --border-radius: 15px;
         }
-
         * { box-sizing: border-box; }
-
         body {
-            font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
             padding: 10px;
             font-size: 16px;
         }
-
-        .tabs-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .tab-btn {
-            background-color: var(--card-bg);
-            color: var(--text-main);
-            border: 1px solid #333;
-            padding: 10px 16px;
-            border-radius: var(--border-radius);
-            font-family: 'Vazirmatn', sans-serif;
-            cursor: pointer;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .tab-btn:hover, .tab-btn.active {
-            background-color: var(--accent-color);
-            color: #000;
-            border-color: var(--accent-color);
-        }
-
-        .tab-content {
-            display: none;
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            border: 1px solid #333;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        @media (max-width: 480px) {
-            .grid-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .tab-btn { font-size: 12px; padding: 8px 10px; }
-        }
-
-        .grid-item {
-            background-color: #2a2a2a;
-            padding: 12px 8px;
-            text-align: center;
-            border-radius: var(--border-radius);
-            border: 1px solid #444;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
+        .tabs-container { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 20px; }
+        .tab-btn { background-color: var(--card-bg); color: var(--text-main); border: 1px solid #333; padding: 10px 16px; border-radius: var(--border-radius); font-family: 'Vazirmatn', sans-serif; cursor: pointer; font-size: 14px; transition: 0.3s; }
+        .tab-btn:hover, .tab-btn.active { background-color: var(--accent-color); color: #000; border-color: var(--accent-color); }
+        .tab-content { display: none; background-color: var(--card-bg); padding: 20px; border-radius: var(--border-radius); border: 1px solid #333; }
+        .tab-content.active { display: block; }
+        .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        @media (max-width: 480px) { .grid-container { grid-template-columns: repeat(2, 1fr); } .tab-btn { font-size: 12px; padding: 8px 10px; } }
+        .grid-item { background-color: #2a2a2a; padding: 12px 8px; text-align: center; border-radius: var(--border-radius); border: 1px solid #444; font-size: 14px; cursor: pointer; transition: 0.2s; }
         .grid-item:hover { border-color: var(--accent-color); }
-
-        .grid-item.admin-editable {
-            border: 1px dashed var(--accent-color) !important;
-            outline: none;
-        }
-
-        .add-player-btn {
-            grid-column: span 1;
-            background-color: #1a3a1a;
-            border: 1px dashed #28a745;
-            color: #28a745;
-            padding: 12px 8px;
-            text-align: center;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-size: 20px;
-            transition: 0.2s;
-        }
-
-        .add-player-btn:hover { background-color: #28a745; color: #fff; }
-
-        .transfer-btn {
-            display: block;
-            width: 100%;
-            margin-top: 20px;
-            padding: 15px;
-            background-color: var(--accent-color);
-            color: #000;
-            border: none;
-            border-radius: var(--border-radius);
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        .login-form {
-            max-width: 320px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .login-form input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: var(--border-radius);
-            border: 1px solid #555;
-            background-color: #222;
-            color: #fff;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 15px;
-        }
-
-        .login-form button {
-            background-color: var(--accent-color);
-            color: #000;
-            padding: 10px 25px;
-            border: none;
-            border-radius: var(--border-radius);
-            font-family: 'Vazirmatn', sans-serif;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 14px;
-        }
-
-        th, td {
-            border: 1px solid #444;
-            padding: 8px 6px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #333;
-            color: var(--accent-color);
-            font-size: 13px;
-        }
-
-        td[contenteditable="true"] {
-            background-color: #1a1a2e;
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        #save-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #28a745;
-            color: #fff;
-            padding: 12px 18px;
-            border-radius: var(--border-radius);
-            border: none;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 15px;
-            cursor: pointer;
-            display: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.5);
-            z-index: 1000;
-        }
-
-        /* League Table */
+        .transfer-btn { display: block; width: 100%; margin-top: 20px; padding: 15px; background-color: var(--accent-color); color: #000; border: none; border-radius: var(--border-radius); font-family: 'Vazirmatn', sans-serif; font-size: 18px; cursor: pointer; }
+        .login-form { max-width: 320px; margin: 0 auto; text-align: center; }
+        .login-form input { width: 100%; padding: 10px; margin: 10px 0; border-radius: var(--border-radius); border: 1px solid #555; background-color: #222; color: #fff; font-family: 'Vazirmatn', sans-serif; font-size: 15px; }
+        .login-form button { background-color: var(--accent-color); color: #000; padding: 10px 25px; border: none; border-radius: var(--border-radius); font-family: 'Vazirmatn', sans-serif; cursor: pointer; font-size: 15px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
+        th, td { border: 1px solid #444; padding: 8px 6px; text-align: center; }
+        th { background-color: #333; color: var(--accent-color); font-size: 13px; }
+        td[contenteditable="true"] { background-color: #1a1a2e; outline: none; border-color: var(--accent-color); }
+        #save-btn { position: fixed; bottom: 20px; right: 20px; background-color: #28a745; color: #fff; padding: 12px 18px; border-radius: var(--border-radius); border: none; font-family: 'Vazirmatn', sans-serif; font-size: 15px; cursor: pointer; display: none; box-shadow: 0 4px 6px rgba(0,0,0,0.5); z-index: 1000; }
         .league-section { margin-bottom: 30px; }
-        .league-section h4 {
-            color: var(--accent-color);
-            border-bottom: 1px solid #444;
-            padding-bottom: 8px;
-            margin-bottom: 10px;
-        }
-
-        .rank-1 td:first-child { color: gold; font-weight: 700; }
-        .rank-2 td:first-child { color: silver; font-weight: 700; }
-        .rank-3 td:first-child { color: #cd7f32; font-weight: 700; }
-
-        /* Match Schedule */
-        .matches-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin-top: 10px;
-        }
-
-        .match-card {
-            background-color: #2a2a2a;
-            border: 1px solid #444;
-            border-radius: var(--border-radius);
-            padding: 14px;
-        }
-
+        .league-section h4 { color: var(--accent-color); border-bottom: 1px solid #444; padding-bottom: 8px; margin-bottom: 10px; }
+        .matches-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 10px; }
+        .match-card { background-color: #2a2a2a; border: 1px solid #444; border-radius: var(--border-radius); padding: 14px; }
         .match-card.played { border-color: #28a745; }
-        .match-card.upcoming { border-color: #555; }
-
-        .match-teams {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-
-        .match-team-name {
-            flex: 1;
-            text-align: center;
-            font-size: 15px;
-            font-weight: 600;
-        }
-
-        .match-score {
-            background-color: #333;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--accent-color);
-            min-width: 60px;
-            text-align: center;
-        }
-
-        .match-date {
-            text-align: center;
-            font-size: 12px;
-            color: #999;
-            margin-top: 4px;
-        }
-
-        .match-status {
-            text-align: center;
-            font-size: 12px;
-            margin-top: 4px;
-        }
-
+        .match-teams { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+        .match-team-name { flex: 1; text-align: center; font-size: 15px; font-weight: 600; }
+        .match-score { background-color: #333; padding: 6px 12px; border-radius: 8px; font-size: 18px; font-weight: 700; color: var(--accent-color); min-width: 60px; text-align: center; }
+        .match-date { text-align: center; font-size: 12px; color: #999; margin-top: 4px; }
+        .match-status { text-align: center; font-size: 12px; margin-top: 4px; }
         .match-status.played-label { color: #28a745; }
         .match-status.upcoming-label { color: #aaa; }
-
-        /* Admin match controls */
-        .admin-match-controls {
-            display: none;
-            margin-top: 10px;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .admin-match-controls.visible { display: flex; }
-
-        .admin-match-controls input {
-            background-color: #222;
-            border: 1px solid #555;
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 8px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 14px;
-            width: 80px;
-            text-align: center;
-        }
-
-        .admin-match-controls input.date-input { width: 150px; }
-
-        .admin-match-controls label { color: #aaa; font-size: 13px; align-self: center; }
-
-        .btn-small {
-            padding: 6px 12px;
-            border-radius: 8px;
-            border: none;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 13px;
-            cursor: pointer;
-        }
-
+        .teams-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 10px; }
+        @media (max-width: 480px) { .teams-grid { grid-template-columns: 1fr; } }
+        .team-card { background-color: #2a2a2a; border: 1px solid #444; border-radius: var(--border-radius); padding: 15px; }
+        .team-card h4 { color: var(--accent-color); margin: 0 0 10px 0; font-size: 16px; border-bottom: 1px solid #444; padding-bottom: 6px; }
+        .team-player-list { list-style: none; padding: 0; margin: 0; }
+        .team-player-list li { padding: 6px 0; border-bottom: 1px solid #333; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
+        .team-player-list li:last-child { border-bottom: none; }
+        .remove-player-btn { background: #dc3545; color: #fff; border: none; border-radius: 6px; padding: 2px 8px; cursor: pointer; font-size: 12px; display: none; }
+        .admin-active .remove-player-btn { display: inline-block; }
+        .editable-section { min-height: 60px; padding: 10px; border-radius: 8px; line-height: 1.8; white-space: pre-wrap; }
+        .editable-section.admin-editable { border: 1px dashed var(--accent-color); }
+        #notif { position: fixed; bottom: 70px; right: 20px; background-color: #28a745; color: #fff; padding: 12px 20px; border-radius: var(--border-radius); font-family: 'Vazirmatn', sans-serif; font-size: 14px; z-index: 2000; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .table-wrap { overflow-x: auto; }
+        .add-match-form { display: none; background-color: #2a2a2a; border: 1px dashed var(--accent-color); border-radius: var(--border-radius); padding: 15px; margin-top: 15px; gap: 10px; flex-wrap: wrap; align-items: center; }
+        .add-match-form.visible { display: flex; }
+        .add-match-form select, .add-match-form input { background-color: #222; border: 1px solid #555; color: #fff; padding: 8px 12px; border-radius: 8px; font-family: 'Vazirmatn', sans-serif; font-size: 14px; }
+        .add-match-form label { color: #aaa; font-size: 13px; }
+        h3 { color: var(--accent-color); }
+        h4 { color: var(--accent-color); }
+        .welcome-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 15px; }
+        .welcome-bar h3 { margin: 0; }
+        .btn-small { padding: 6px 12px; border-radius: 8px; border: none; font-family: 'Vazirmatn', sans-serif; font-size: 13px; cursor: pointer; }
         .btn-green { background-color: #28a745; color: #fff; }
         .btn-red { background-color: #dc3545; color: #fff; }
         .btn-gold { background-color: var(--accent-color); color: #000; }
-
-        /* Teams tab */
-        .teams-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 480px) {
-            .teams-grid { grid-template-columns: 1fr; }
-        }
-
-        .team-card {
-            background-color: #2a2a2a;
-            border: 1px solid #444;
-            border-radius: var(--border-radius);
-            padding: 15px;
-        }
-
-        .team-card h4 {
-            color: var(--accent-color);
-            margin: 0 0 10px 0;
-            font-size: 16px;
-            border-bottom: 1px solid #444;
-            padding-bottom: 6px;
-        }
-
-        .team-player-list { list-style: none; padding: 0; margin: 0; }
-
-        .team-player-list li {
-            padding: 6px 0;
-            border-bottom: 1px solid #333;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .team-player-list li:last-child { border-bottom: none; }
-
-        .remove-player-btn {
-            background: #dc3545;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            padding: 2px 8px;
-            cursor: pointer;
-            font-size: 12px;
-            font-family: 'Vazirmatn', sans-serif;
-            display: none;
-        }
-
-        .admin-active .remove-player-btn { display: inline-block; }
-
-        .add-team-player {
-            display: none;
-            margin-top: 8px;
-            gap: 6px;
-        }
-
-        .add-team-player.visible { display: flex; }
-
-        .add-team-player input {
-            flex: 1;
-            background-color: #222;
-            border: 1px solid #555;
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 8px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 14px;
-        }
-
-        /* Section editable */
-        .editable-section {
-            min-height: 60px;
-            padding: 10px;
-            border-radius: 8px;
-            line-height: 1.8;
-        }
-
-        .editable-section.admin-editable {
-            border: 1px dashed var(--accent-color);
-        }
-
-        /* Notification */
-        #notif {
-            position: fixed;
-            bottom: 70px;
-            right: 20px;
-            background-color: #28a745;
-            color: #fff;
-            padding: 12px 20px;
-            border-radius: var(--border-radius);
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 14px;
-            z-index: 2000;
-            display: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
-        /* Overflow tables on mobile */
-        .table-wrap { overflow-x: auto; }
-
-        /* Add match form (admin) */
-        .add-match-form {
-            display: none;
-            background-color: #2a2a2a;
-            border: 1px dashed var(--accent-color);
-            border-radius: var(--border-radius);
-            padding: 15px;
-            margin-top: 15px;
-            gap: 10px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .add-match-form.visible { display: flex; }
-
-        .add-match-form select,
-        .add-match-form input {
-            background-color: #222;
-            border: 1px solid #555;
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 14px;
-        }
-
-        .add-match-form label { color: #aaa; font-size: 13px; }
-
-        h3 { color: var(--accent-color); }
-        h4 { color: var(--accent-color); }
-
-        .section-title-editable {
-            display: inline-block;
-            min-width: 80px;
-        }
-
-        .welcome-bar {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-
-        .welcome-bar h3 { margin: 0; }
+        .admin-match-controls { display: none; margin-top: 10px; gap: 8px; flex-wrap: wrap; }
+        .admin-match-controls.visible { display: flex; }
+        .admin-match-controls input { background-color: #222; border: 1px solid #555; color: #fff; padding: 6px 10px; border-radius: 8px; font-family: 'Vazirmatn', sans-serif; font-size: 14px; width: 80px; text-align: center; }
+        .admin-match-controls input.date-input { width: 150px; }
+        .admin-match-controls label { color: #aaa; font-size: 13px; align-self: center; }
+        .loading-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 9999; color: var(--accent-color); font-size: 20px; font-family: 'Vazirmatn', sans-serif; }
     </style>
-  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
-  <script src="/_sdk/0179d719c431a79e.data_sdk.js" type="text/javascript" integrity="sha512-OsRvJkI5GkC3MJQcgotQYotpzrMSX415GiKKgvYdxQEEkzD/fdchShO2FMSy0PJr/tiINMXOk5Vl2zAgg6bUiA=="></script>
   <script src="/_sdk/9432170dbd2ae0df.resizing_sdk.js" type="text/javascript" integrity="sha512-FeT+58sb1f9ejWPWFjCbJvTT+SDwGV+ngrHUnlO7TWEOoqwOLj6p256kO3vOL7DIWl1cIgrobiof8v2bOigwPg=="></script>
  </head>
  <body data-template-id="__page-root">
-  <div class="tabs-container"><button class="tab-btn active" data-tab="home" onclick="openTab('home', this)" data-template-id="tab-home">صفحه اصلی</button> <button class="tab-btn" data-tab="profile" onclick="openTab('profile', this)" data-template-id="tab-profile">عملکرد من / ورود</button> <button class="tab-btn" data-tab="rules" onclick="openTab('rules', this)" data-template-id="tab-rules">قانون‌ها</button> <button class="tab-btn" data-tab="league" onclick="openTab('league', this)" data-template-id="tab-league">جدول و لیگ</button> <button class="tab-btn" data-tab="teams" onclick="openTab('teams', this)" data-template-id="tab-teams">تیم‌ها</button> <button class="tab-btn" data-tab="feedback" onclick="openTab('feedback', this)" data-template-id="tab-feedback">پیشنهادات و انتقادات</button> <button class="tab-btn" data-tab="poll" onclick="openTab('poll', this)" data-template-id="tab-poll">نظر سنجی</button> <button class="tab-btn" data-tab="transfers" onclick="openTab('transfers', this)" data-template-id="tab-transfers">نقل و انتقالات</button>
+  <div id="loading-overlay" class="loading-overlay">
+   در حال بارگذاری...
+  </div>
+  <div class="tabs-container"><button class="tab-btn active" data-tab="home" onclick="openTab('home', this)" data-template-id="tab-home"></button> <button class="tab-btn" data-tab="profile" onclick="openTab('profile', this)" data-template-id="tab-profile"></button> <button class="tab-btn" data-tab="rules" onclick="openTab('rules', this)" data-template-id="tab-rules"></button> <button class="tab-btn" data-tab="league" onclick="openTab('league', this)" data-template-id="tab-league"></button> <button class="tab-btn" data-tab="teams" onclick="openTab('teams', this)" data-template-id="tab-teams"></button> <button class="tab-btn" data-tab="feedback" onclick="openTab('feedback', this)" data-template-id="tab-feedback"></button> <button class="tab-btn" data-tab="poll" onclick="openTab('poll', this)" data-template-id="tab-poll"></button> <button class="tab-btn" data-tab="transfers" onclick="openTab('transfers', this)" data-template-id="tab-transfers"></button>
   </div><!-- Home Tab -->
   <div id="home" class="tab-content active">
-   <div id="players-grid" class="grid-container"></div><button class="transfer-btn" data-template-id="transfers-btn" onclick="openTab('transfers', null)">نقل و انتقالات</button>
+   <div id="players-grid" class="grid-container"></div><button class="transfer-btn" data-template-id="transfers-btn" onclick="openTab('transfers', null)"></button>
   </div><!-- Profile / Login Tab -->
   <div id="profile" class="tab-content">
    <div id="login-section" class="login-form">
-    <h3 data-template-id="login-title" class="canva-text">ورود به سایت</h3><input type="text" id="username" placeholder="نام کاربری"> <input type="password" id="password" placeholder="رمز عبور"> <button onclick="login()" data-template-id="login-btn" class="canva-button">ورود</button>
-    <p id="login-error" style="color: red; display: none;" data-template-id="login-error-msg" class="canva-text">نام کاربری یا رمز عبور اشتباه است!</p>
+    <h3 data-template-id="login-title" class="canva-text"></h3><input type="text" id="username" placeholder="نام کاربری"> <input type="password" id="password" placeholder="رمز عبور"> <button onclick="login()" data-template-id="login-btn" class="canva-button">ورود</button>
+    <p id="login-error" style="color: red; display: none;">نام کاربری یا رمز عبور اشتباه است!</p>
    </div>
    <div id="user-section" style="display: none;">
     <div class="welcome-bar">
-     <h3 id="welcome-msg"></h3><button onclick="logout()" class="tab-btn btn-red" style="background:red;color:white;" data-template-id="logout-btn">خروج</button>
+     <h3 id="welcome-msg"></h3><button onclick="logout()" class="tab-btn btn-red" style="background:red;color:white;" data-template-id="logout-btn"></button>
     </div>
     <div id="player-view" style="display: none;">
-     <h4 data-template-id="ranking-title" class="canva-text">جدول رتبه‌بندی بازیکنان (بر اساس گل)</h4>
+     <h4 data-template-id="ranking-title" class="canva-text"></h4>
      <div class="table-wrap" id="ranking-table-container"></div>
     </div>
     <div id="admin-view" style="display: none;">
-     <h4 data-template-id="admin-stats-title" class="canva-text">پنل مدیریت آمار بازیکنان</h4>
+     <h4 data-template-id="admin-stats-title" class="canva-text"></h4>
      <div class="table-wrap" id="admin-table-container"></div>
      <div style="margin-top:20px;">
-      <h4 data-template-id="admin-players-title" class="canva-text">مدیریت لیست بازیکنان صفحه اصلی</h4>
+      <h4 data-template-id="admin-players-title" class="canva-text"></h4>
       <div id="admin-players-list"></div>
-      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;"><input type="text" id="new-player-name" placeholder="نام بازیکن جدید" style="background:#222;border:1px solid #555;color:#fff;padding:8px 12px;border-radius:8px;font-family:'Vazirmatn',sans-serif;font-size:14px;flex:1;"> <button class="btn-small btn-green" onclick="addPlayerToList()" data-template-id="add-player-btn">+ اضافه کردن</button>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;"><input type="text" id="new-player-name" placeholder="نام بازیکن جدید" style="background:#222;border:1px solid #555;color:#fff;padding:8px 12px;border-radius:8px;font-family:'Vazirmatn',sans-serif;font-size:14px;flex:1;"> <button class="btn-small btn-green" onclick="addPlayerToList()" data-template-id="add-player-btn"></button>
       </div>
      </div>
     </div>
    </div>
   </div><!-- Rules Tab -->
   <div id="rules" class="tab-content">
-   <h3><span class="section-title-editable" id="rules-heading" data-template-id="rules-heading">قوانین بازی</span></h3>
-   <div id="rules-text" class="editable-section" data-template-id="rules-text">
-    فحش دادن حین یا خارج بازی = 5 بازی اخراج.
-   </div>
-  </div><!-- League Table Tab -->
+   <h3><span data-template-id="rules-heading"></span></h3>
+   <div id="rules-text" class="editable-section"></div>
+  </div><!-- League Tab -->
   <div id="league" class="tab-content">
-   <h3><span class="section-title-editable" id="league-heading" data-template-id="league-heading">جدول و لیگ</span></h3>
+   <h3><span data-template-id="league-heading"></span></h3>
    <div class="league-section">
-    <h4 data-template-id="standings-title" class="canva-text">جدول رتبه‌بندی تیم‌ها</h4>
+    <h4 data-template-id="standings-title" class="canva-text"></h4>
     <div class="table-wrap" id="standings-table"></div>
    </div>
    <div class="league-section">
-    <h4 data-template-id="schedule-title" class="canva-text">برنامه و نتایج بازی‌ها</h4>
-    <div id="matches-list"></div><!-- Admin: Add Match -->
-    <div id="add-match-form" class="add-match-form"><label data-template-id="add-match-label" class="canva-text">افزودن بازی جدید:</label> <select id="match-team1" style="background:#222;border:1px solid #555;color:#fff;padding:8px 12px;border-radius:8px;font-family:'Vazirmatn',sans-serif;"></select> <span style="color:#aaa;">vs</span> <select id="match-team2" style="background:#222;border:1px solid #555;color:#fff;padding:8px 12px;border-radius:8px;font-family:'Vazirmatn',sans-serif;"></select> <input type="text" id="match-date" placeholder="تاریخ (مثلاً ۱۴ شهریور)" style="background:#222;border:1px solid #555;color:#fff;padding:8px 12px;border-radius:8px;font-family:'Vazirmatn',sans-serif;width:160px;"> <button class="btn-small btn-gold" onclick="addMatch()" data-template-id="add-match-btn">+ افزودن بازی</button>
+    <h4 data-template-id="schedule-title" class="canva-text"></h4>
+    <div id="matches-list"></div>
+    <div id="add-match-form" class="add-match-form"><label>افزودن بازی جدید:</label> <select id="match-team1"></select> <span style="color:#aaa;">vs</span> <select id="match-team2"></select> <input type="text" id="match-date" placeholder="تاریخ"> <button class="btn-small btn-gold" onclick="addMatch()" data-template-id="add-match-btn"></button>
     </div>
    </div>
    <div class="league-section">
-    <div id="league-extra-text-wrap">
-     <h4 data-template-id="league-extra-title" class="canva-text">توضیحات بیشتر</h4>
-     <div id="league-text" class="editable-section" data-template-id="league-text"></div>
-    </div>
+    <h4 data-template-id="league-extra-title" class="canva-text"></h4>
+    <div id="league-text" class="editable-section"></div>
    </div>
   </div><!-- Teams Tab -->
   <div id="teams" class="tab-content">
-   <h3><span class="section-title-editable" id="teams-heading" data-template-id="teams-heading">تیم‌ها</span></h3>
+   <h3><span data-template-id="teams-heading"></span></h3>
    <div id="teams-grid" class="teams-grid"></div>
   </div><!-- Feedback Tab -->
   <div id="feedback" class="tab-content">
-   <h3><span class="section-title-editable" id="feedback-heading" data-template-id="feedback-heading">پیشنهادات و انتقادات</span></h3>
-   <div id="feedback-desc" class="editable-section" data-template-id="feedback-desc">
-    نظرات خود را اینجا بنویسید.
-   </div>
+   <h3><span data-template-id="feedback-heading"></span></h3>
+   <div id="feedback-desc" class="editable-section"></div>
   </div><!-- Poll Tab -->
   <div id="poll" class="tab-content">
-   <h3><span class="section-title-editable" id="poll-heading" data-template-id="poll-heading">نظر سنجی</span></h3>
-   <div id="poll-text" class="editable-section" data-template-id="poll-text">
-    سوال نظر سنجی در اینجا قرار میگیرد...
-   </div>
+   <h3><span data-template-id="poll-heading"></span></h3>
+   <div id="poll-text" class="editable-section"></div>
   </div><!-- Transfers Tab -->
   <div id="transfers" class="tab-content">
-   <h3><span class="section-title-editable" id="transfers-heading" data-template-id="transfers-heading">نقل و انتقالات</span></h3>
-   <div id="transfers-text" class="editable-section" data-template-id="transfers-text">
-    لیست نقل و انتقالات...
-   </div>
+   <h3><span data-template-id="transfers-heading"></span></h3>
+   <div id="transfers-text" class="editable-section"></div>
   </div><button id="save-btn" onclick="saveAdminChanges()">💾 ذخیره تغییرات</button>
   <div id="notif">
    ✅ تغییرات ذخیره شد!
-  </div
+  </div>
+  <script src="/_sdk/719055fef2a85d14.editing_sdk.js" integrity="sha512-kFqrdGgIiTOsu307feB5Cy3JVP9IayftsmCIZ0csxYBGuBmJQPhyvcnmKR8F0fTW97h5s1gAvz3SumI8zJ6OxQ=="></script>
+  <script src="/_sdk/0179d719c431a79e.data_sdk.js" integrity="sha512-OsRvJkI5GkC3MJQcgotQYotpzrMSX415GiKKgvYdxQEEkzD/fdchShO2FMSy0PJr/tiINMXOk5Vl2zAgg6bUiA=="></script>
+  <script>
+    // Players database
+    const PLAYERS = [
+        {name:"یاشار احمدوند", username:"yashar_a", pass:"1001"},
+        {name:"جواد شریفی", username:"javad_sh", pass:"1002"},
+        {name:"محمد صالح حیدری", username:"saleh_h", pass:"1003"},
+        {name:"علی صمدی", username:"ali_sa", pass:"1004"},
+        {name:"آرتین حمزه زاده", username:"artin_h", pass:"1005"},
+        {name:"آرتا زارعی", username:"arta_z", pass:"1006"},
+        {name:"یاشار صالحی", username:"yashar_s", pass:"1007"},
+        {name:"کیان میرزایی", username:"kian_m", pass:"1008"},
+        {name:"مهدی خوش مرام", username:"mehdi_kh", pass:"1009"},
+        {name:"امیرعلی شالی", username:"amirali_sh", pass:"1010"},
+        {name:"کوروش عبدی", username:"kourosh_a", pass:"1011"},
+        {name:"امیرمحمد بداغی", username:"amirmohammad_b", pass:"1012"},
+        {name:"علیرضا کهوند", username:"alireza_k", pass:"1013"},
+        {name:"مهدی کرمی", username:"mehdi_ka", pass:"1014"},
+        {name:"سامیار احمدوند", username:"samiar_a", pass:"1015"},
+        {name:"علی حسینی", username:"ali_ho", pass:"1016"},
+        {name:"آبتین", username:"abtin", pass:"1017"},
+        {name:"علی والیبالی", username:"ali_v", pass:"1018"}
+    ];
+    const ADMIN = {username:"MODIR", pass:"13963"};
+
+    let currentUser = null;
+    let isAdmin = false;
+    let appData = {};
+
+    // Default data
+    const DEFAULT_DATA = {
+        players_list: JSON.stringify(PLAYERS.map(p => p.name)),
+        rules_text: "فحش دادن حین یا خارج بازی = 5 بازی اخراج.",
+        league_text: "",
+        feedback_desc: "نظرات خود را اینجا بنویسید.",
+        poll_text: "سوال نظر سنجی در اینجا قرار میگیرد...",
+        transfers_text: "لیست نقل و انتقالات...",
+        teams: JSON.stringify([]),
+        matches: JSON.stringify([]),
+        player_stats: JSON.stringify({}),
+        standings: JSON.stringify([])
+    };
+
+    // Data SDK handler
+    const dataHandler = {
+        onDataChanged(data) {
+            // Build appData from key-value records
+            appData = {};
+            data.forEach(record => {
+                appData[record.key] = record;
+            });
+            renderAll();
+            document.getElementById('loading-overlay').style.display = 'none';
+        }
+    };
+
+    async function initApp() {
+        const result = await window.dataSdk.init(dataHandler);
+        if (!result.isOk) {
+            document.getElementById('loading-overlay').textContent = 'خطا در بارگذاری!';
+        }
+    }
+
+    function getData(key) {
+        if (appData[key]) return appData[key].value;
+        return DEFAULT_DATA[key] || "";
+    }
+
+    async function setData(key, value) {
+        if (appData[key]) {
+            const record = {...appData[key], value: value};
+            return await window.dataSdk.update(record);
+        } else {
+            return await window.dataSdk.create({key: key, value: value});
+        }
+    }
+
+    function renderAll() {
+        renderPlayersGrid();
+        renderRulesText();
+        renderLeagueText();
+        renderFeedbackDesc();
+        renderPollText();
+        renderTransfersText();
+        renderTeams();
+        renderMatches();
+        renderStandings();
+        if (isAdmin) renderAdminView();
+        if (currentUser && !isAdmin) renderPlayerView();
+    }
+
+    // Tab navigation
+    function openTab(tabId, btn) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        if (btn) btn.classList.add('active');
+        else document.querySelector(`[data-tab="${tabId}"]`)?.classList.add('active');
+    }
+
+    // Login
+    function login() {
+        const u = document.getElementById('username').value.trim();
+        const p = document.getElementById('password').value.trim();
+        if (u === ADMIN.username && p === ADMIN.pass) {
+            isAdmin = true;
+            currentUser = {name: "مدیر", username: ADMIN.username};
+            showUserSection();
+            return;
+        }
+        const player = PLAYERS.find(pl => pl.username === u && pl.pass === p);
+        if (player) {
+            currentUser = player;
+            isAdmin = false;
+            showUserSection();
+        } else {
+            document.getElementById('login-error').style.display = 'block';
+        }
+    }
+
+    function showUserSection() {
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('user-section').style.display = 'block';
+        document.getElementById('login-error').style.display = 'none';
+        document.getElementById('welcome-msg').textContent = `خوش آمدید، ${currentUser.name}!`;
+        if (isAdmin) {
+            document.getElementById('admin-view').style.display = 'block';
+            document.getElementById('player-view').style.display = 'none';
+            document.getElementById('save-btn').style.display = 'block';
+            enableAdminEditing();
+            renderAdminView();
+        } else {
+            document.getElementById('admin-view').style.display = 'none';
+            document.getElementById('player-view').style.display = 'block';
+            document.getElementById('save-btn').style.display = 'none';
+            renderPlayerView();
+        }
+    }
+
+    function logout() {
+        currentUser = null;
+        isAdmin = false;
+        document.getElementById('login-section').style.display = 'block';
+        document.getElementById('user-section').style.display = 'none';
+        document.getElementById('save-btn').style.display = 'none';
+        disableAdminEditing();
+    }
+
+    // Players Grid (Home)
+    function renderPlayersGrid() {
+        const container = document.getElementById('players-grid');
+        let players;
+        try { players = JSON.parse(getData('players_list')); } catch(e) { players = PLAYERS.map(p=>p.name); }
+        container.innerHTML = players.map(name => `<div class="grid-item">${name}</div>`).join('');
+    }
+
+    // Editable text sections
+    function renderRulesText() { document.getElementById('rules-text').textContent = getData('rules_text'); }
+    function renderLeagueText() { document.getElementById('league-text').textContent = getData('league_text'); }
+    function renderFeedbackDesc() { document.getElementById('feedback-desc').textContent = getData('feedback_desc'); }
+    function renderPollText() { document.getElementById('poll-text').textContent = getData('poll_text'); }
+    function renderTransfersText() { document.getElementById('transfers-text').textContent = getData('transfers_text'); }
+
+    // Teams
+    function renderTeams() {
+        const container = document.getElementById('teams-grid');
+        let teams;
+        try { teams = JSON.parse(getData('teams')); } catch(e) { teams = []; }
+        if (teams.length === 0) {
+            container.innerHTML = '<p style="color:#999;">هنوز تیمی اضافه نشده.</p>';
+            return;
+        }
+        container.innerHTML = teams.map((team, i) => `
+            <div class="team-card ${isAdmin ? 'admin-active' : ''}">
+                <h4>${team.name}</h4>
+                <ul class="team-player-list">
+                    ${team.players.map((p, pi) => `<li>${p} <button class="remove-player-btn" onclick="removeTeamPlayer(${i},${pi})">✕</button></li>`).join('')}
+                </ul>
+                ${isAdmin ? `<div style="display:flex;gap:6px;margin-top:8px;"><input type="text" id="tp-${i}" placeholder="نام بازیکن" style="flex:1;background:#222;border:1px solid #555;color:#fff;padding:6px;border-radius:8px;font-family:'Vazirmatn',sans-serif;font-size:13px;"><button class="btn-small btn-green" onclick="addTeamPlayer(${i})">+</button></div>` : ''}
+                ${isAdmin ? `<button class="btn-small btn-red" style="margin-top:8px;" onclick="removeTeam(${i})">حذف تیم</button>` : ''}
+            </div>
+        `).join('');
+        updateMatchTeamSelects(teams);
+    }
+
+    function updateMatchTeamSelects(teams) {
+        const s1 = document.getElementById('match-team1');
+        const s2 = document.getElementById('match-team2');
+        if (!s1 || !s2) return;
+        const opts = teams.map(t => `<option value="${t.name}">${t.name}</option>`).join('');
+        s1.innerHTML = opts;
+        s2.innerHTML = opts;
+    }
+
+    // Matches
+    function renderMatches() {
+        const container = document.getElementById('matches-list');
+        let matches;
+        try { matches = JSON.parse(getData('matches')); } catch(e) { matches = []; }
+        if (matches.length === 0) {
+            container.innerHTML = '<p style="color:#999;">هنوز بازی‌ای ثبت نشده.</p>';
+            return;
+        }
+        container.innerHTML = '<div class="matches-grid">' + matches.map((m, i) => `
+            <div class="match-card ${m.played ? 'played' : 'upcoming'}">
+                <div class="match-teams">
+                    <span class="match-team-name">${m.team1}</span>
+                    <span class="match-score">${m.played ? m.score1 + ' - ' + m.score2 : '- - -'}</span>
+                    <span class="match-team-name">${m.team2}</span>
+                </div>
+                <div class="match-date">${m.date || ''}</div>
+                <div class="match-status ${m.played ? 'played-label' : 'upcoming-label'}">${m.played ? 'انجام شده' : 'برگزار نشده'}</div>
+                ${isAdmin ? `
+                <div class="admin-match-controls visible" style="display:flex;">
+                    <input type="number" id="ms1-${i}" value="${m.score1||0}" min="0" style="width:50px;">
+                    <span style="color:#aaa;align-self:center;">-</span>
+                    <input type="number" id="ms2-${i}" value="${m.score2||0}" min="0" style="width:50px;">
+                    <button class="btn-small btn-green" onclick="saveMatchScore(${i})">ثبت</button>
+                    <button class="btn-small btn-red" onclick="removeMatch(${i})">حذف</button>
+                </div>` : ''}
+            </div>
+        `).join('') + '</div>';
+    }
+
+    // Standings
+    function renderStandings() {
+        const container = document.getElementById('standings-table');
+        let teams, matches;
+        try { teams = JSON.parse(getData('teams')); } catch(e) { teams = []; }
+        try { matches = JSON.parse(getData('matches')); } catch(e) { matches = []; }
+        if (teams.length === 0) { container.innerHTML = '<p style="color:#999;">تیمی وجود ندارد.</p>'; return; }
+
+        const stats = {};
+        teams.forEach(t => { stats[t.name] = {w:0,d:0,l:0,gf:0,ga:0,pts:0,played:0}; });
+        matches.filter(m=>m.played).forEach(m => {
+            if (!stats[m.team1] || !stats[m.team2]) return;
+            const s1 = parseInt(m.score1)||0, s2 = parseInt(m.score2)||0;
+            stats[m.team1].gf += s1; stats[m.team1].ga += s2; stats[m.team1].played++;
+            stats[m.team2].gf += s2; stats[m.team2].ga += s1; stats[m.team2].played++;
+            if (s1 > s2) { stats[m.team1].w++; stats[m.team1].pts+=3; stats[m.team2].l++; }
+            else if (s2 > s1) { stats[m.team2].w++; stats[m.team2].pts+=3; stats[m.team1].l++; }
+            else { stats[m.team1].d++; stats[m.team1].pts++; stats[m.team2].d++; stats[m.team2].pts++; }
+        });
+
+        const sorted = Object.entries(stats).sort((a,b) => b[1].pts - a[1].pts || (b[1].gf-b[1].ga) - (a[1].gf-a[1].ga));
+        container.innerHTML = `<table><thead><tr><th>#</th><th>تیم</th><th>بازی</th><th>برد</th><th>مساوی</th><th>باخت</th><th>گل زده</th><th>گل خورده</th><th>امتیاز</th></tr></thead><tbody>${sorted.map(([name, s], i) => `<tr class="${i<3?'rank-'+(i+1):''}"><td>${i+1}</td><td>${name}</td><td>${s.played}</td><td>${s.w}</td><td>${s.d}</td><td>${s.l}</td><td>${s.gf}</td><td>${s.ga}</td><td>${s.pts}</td></tr>`).join('')}</tbody></table>`;
+    }
+
+    // Admin
+    function enableAdminEditing() {
+        ['rules-text','league-text','feedback-desc','poll-text','transfers-text'].forEach(id => {
+            const el = document.getElementById(id);
+            el.contentEditable = 'true';
+            el.classList.add('admin-editable');
+        });
+        document.getElementById('add-match-form').classList.add('visible');
+    }
+
+    function disableAdminEditing() {
+        ['rules-text','league-text','feedback-desc','poll-text','transfers-text'].forEach(id => {
+            const el = document.getElementById(id);
+            el.contentEditable = 'false';
+            el.classList.remove('admin-editable');
+        });
+        document.getElementById('add-match-form').classList.remove('visible');
+    }
+
+    function renderAdminView() {
+        // Player stats table
+        let stats;
+        try { stats = JSON.parse(getData('player_stats')); } catch(e) { stats = {}; }
+        let players;
+        try { players = JSON.parse(getData('players_list')); } catch(e) { players = PLAYERS.map(p=>p.name); }
+
+        const container = document.getElementById('admin-table-container');
+        container.innerHTML = `<table><thead><tr><th>بازیکن</th><th>گل</th><th>اسیست</th><th>بازی</th></tr></thead><tbody>${players.map(p => {
+            const s = stats[p] || {goals:0,assists:0,games:0};
+            return `<tr><td>${p}</td><td contenteditable="true" class="stat-cell" data-player="${p}" data-field="goals">${s.goals}</td><td contenteditable="true" class="stat-cell" data-player="${p}" data-field="assists">${s.assists}</td><td contenteditable="true" class="stat-cell" data-player="${p}" data-field="games">${s.games}</td></tr>`;
+        }).join('')}</tbody></table>`;
+
+        // Admin players list
+        const listContainer = document.getElementById('admin-players-list');
+        listContainer.innerHTML = players.map((p, i) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #333;"><span>${p}</span><button class="btn-small btn-red" onclick="removePlayerFromList(${i})">✕</button></div>`).join('');
+    }
+
+    function renderPlayerView() {
+        let stats;
+        try { stats = JSON.parse(getData('player_stats')); } catch(e) { stats = {}; }
+        let players;
+        try { players = JSON.parse(getData('players_list')); } catch(e) { players = PLAYERS.map(p=>p.name); }
+
+        const sorted = players.map(p => ({name:p, ...(stats[p]||{goals:0,assists:0,games:0})})).sort((a,b) => b.goals - a.goals);
+        const container = document.getElementById('ranking-table-container');
+        container.innerHTML = `<table><thead><tr><th>#</th><th>بازیکن</th><th>گل</th><th>اسیست</th><th>بازی</th></tr></thead><tbody>${sorted.map((p, i) => `<tr class="${i<3?'rank-'+(i+1):''}"><td>${i+1}</td><td>${p.name}</td><td>${p.goals}</td><td>${p.assists}</td><td>${p.games}</td></tr>`).join('')}</tbody></table>`;
+    }
+
+    // Admin actions
+    async function addPlayerToList() {
+        const input = document.getElementById('new-player-name');
+        const name = input.value.trim();
+        if (!name) return;
+        let players;
+        try { players = JSON.parse(getData('players_list')); } catch(e) { players = PLAYERS.map(p=>p.name); }
+        players.push(name);
+        await setData('players_list', JSON.stringify(players));
+        input.value = '';
+        showNotif();
+    }
+
+    async function removePlayerFromList(index) {
+        let players;
+        try { players = JSON.parse(getData('players_list')); } catch(e) { players = []; }
+        players.splice(index, 1);
+        await setData('players_list', JSON.stringify(players));
+        showNotif();
+    }
+
+    async function addMatch() {
+        const team1 = document.getElementById('match-team1').value;
+        const team2 = document.getElementById('match-team2').value;
+        const date = document.getElementById('match-date').value.trim();
+        if (!team1 || !team2 || team1 === team2) return;
+        let matches;
+        try { matches = JSON.parse(getData('matches')); } catch(e) { matches = []; }
+        matches.push({team1, team2, date, played: false, score1: 0, score2: 0});
+        await setData('matches', JSON.stringify(matches));
+        document.getElementById('match-date').value = '';
+        showNotif();
+    }
+
+    async function saveMatchScore(index) {
+        let matches;
+        try { matches = JSON.parse(getData('matches')); } catch(e) { matches = []; }
+        matches[index].score1 = parseInt(document.getElementById(`ms1-${index}`).value) || 0;
+        matches[index].score2 = parseInt(document.getElementById(`ms2-${index}`).value) || 0;
+        matches[index].played = true;
+        await setData('matches', JSON.stringify(matches));
+        showNotif();
+    }
+
+    async function removeMatch(index) {
+        let matches;
+        try { matches = JSON.parse(getData('matches')); } catch(e) { matches = []; }
+        matches.splice(index, 1);
+        await setData('matches', JSON.stringify(matches));
+        showNotif();
+    }
+
+    async function addTeamPlayer(teamIndex) {
+        const input = document.getElementById(`tp-${teamIndex}`);
+        const name = input.value.trim();
+        if (!name) return;
+        let teams;
+        try { teams = JSON.parse(getData('teams')); } catch(e) { teams = []; }
+        teams[teamIndex].players.push(name);
+        await setData('teams', JSON.stringify(teams));
+        input.value = '';
+        showNotif();
+    }
+
+    async function removeTeamPlayer(teamIndex, playerIndex) {
+        let teams;
+        try { teams = JSON.parse(getData('teams')); } catch(e) { teams = []; }
+        teams[teamIndex].players.splice(playerIndex, 1);
+        await setData('teams', JSON.stringify(teams));
+        showNotif();
+    }
+
+    async function removeTeam(teamIndex) {
+        let teams;
+        try { teams = JSON.parse(getData('teams')); } catch(e) { teams = []; }
+        teams.splice(teamIndex, 1);
+        await setData('teams', JSON.stringify(teams));
+        showNotif();
+    }
+
+    // Save all admin changes (text sections + stats)
+    async function saveAdminChanges() {
+        document.getElementById('save-btn').disabled = true;
+        document.getElementById('save-btn').textContent = '⏳ در حال ذخیره...';
+
+        // Save text sections
+        await setData('rules_text', document.getElementById('rules-text').innerText);
+        await setData('league_text', document.getElementById('league-text').innerText);
+        await setData('feedback_desc', document.getElementById('feedback-desc').innerText);
+        await setData('poll_text', document.getElementById('poll-text').innerText);
+        await setData('transfers_text', document.getElementById('transfers-text').innerText);
+
+        // Save player stats from table
+        const cells = document.querySelectorAll('.stat-cell');
+        let stats;
+        try { stats = JSON.parse(getData('player_stats')); } catch(e) { stats = {}; }
+        cells.forEach(cell => {
+            const player = cell.dataset.player;
+            const field = cell.dataset.field;
+            if (!stats[player]) stats[player] = {goals:0, assists:0, games:0};
+            stats[player][field] = parseInt(cell.textContent) || 0;
+        });
+        await setData('player_stats', JSON.stringify(stats));
+
+        document.getElementById('save-btn').disabled = false;
+        document.getElementById('save-btn').textContent = '💾 ذخیره تغییرات';
+        showNotif();
+    }
+
+    function showNotif() {
+        const n = document.getElementById('notif');
+        n.style.display = 'block';
+        setTimeout(() => { n.style.display = 'none'; }, 2500);
+    }
+
+    // Init
+    initApp();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1a746a490a039c2',t:'MTc4MzkzNTA5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
